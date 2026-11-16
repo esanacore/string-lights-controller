@@ -32,7 +32,7 @@ Line coverage isn't meaningful for a single Arduino sketch checked statically. T
 
 | Date | Overall coverage | Notes |
 | --- | --- | --- |
-| 2026-11-16 | 13 of 14 requirements with checks; 18 automated tests | Baseline at constitution adoption |
+| 2026-11-16 | 13 of 13 requirements with checks; 18 automated tests | Baseline at constitution adoption |
 
 ## Coverage Gap Log
 
@@ -42,7 +42,7 @@ Line coverage isn't meaningful for a single Arduino sketch checked statically. T
 | GAP-002 | Effect timing (`effectLevel`) not unit-tested | low | FR-002 | Open | TODO.md Testing |
 | GAP-003 | Matrix post dimensions are estimates; lid fit unverified | med | FR-008 | Open | TODO.md Features |
 | GAP-004 | IR remote codes unverified on hardware | low | FR-007 | Open | TODO.md Testing |
-| GAP-005 | Home Assistant control not started | low | FR-010 | Open | TODO.md Features |
+| GAP-005 | Home Assistant control not started (backlog, no requirement yet) | low | backlog | Open | TODO.md Features |
 
 ## Requirement Coverage
 

@@ -7,7 +7,7 @@ Living roadmap. Open items are `[ ]`, in progress `[~]`, done `[x]`.
 - [ ] Replace the faulty IR receiver (any 38 kHz 1838) and verify the 21-key remote codes with `firmware/ir_test`, then the main sketch (FR-007).
 - [ ] Case v2 lid: measure the HW-109 (LED face to PCB, hole positions and diameter, overhang past the block), set `MX_*` in `uno_case_v2.py`, slice, print (FR-008).
 - [ ] Set `CYCLE_ON_POWERUP = false` once IR works, so power-up resumes the last state (ADR 0004).
-- [ ] Home Assistant control: serial bridge on a nearby host, or move to an ESP32 + ESPHome (FR-010).
+- [ ] Home Assistant control: serial bridge on a nearby host, or move to an ESP32 + ESPHome.
 - [ ] Optional second button on D5 (brightness/speed); firmware already supports it.
 
 ## Technical Debt

@@ -20,7 +20,6 @@ Links each requirement in `docs/PRODUCT_REQUIREMENTS.md` to its tests and verifi
 | FR-007 | SHOULD | 21-key IR remote | FR-007-AC-1 | `test_firmware_static.py::test_pin_map` (D2); codes unverified: receiver faulty (`docs/ir-receiver.md`) | Deferred |
 | FR-008 | MUST | Enclosure v2 | FR-008-AC-1, -AC-2, -AC-3 | `tests/test_case_geometry.py` (`test_usb_cutout_centered_on_port`, `test_lid_does_not_collide_with_base`, `test_lid_holes_align_with_bosses`); physical fit pending print | In Progress |
 | FR-009 | SHOULD | Serial commands | FR-009-AC-1 | Syntax only (`tests/test_firmware_syntax.sh`); manual 2026-11-15 | Verified |
-| FR-010 | COULD | Home Assistant | FR-010-AC-1 | none — GAP (not started) | Not Started |
 
 ## Non-Functional Requirements
 
