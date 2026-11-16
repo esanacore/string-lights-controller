@@ -31,7 +31,9 @@ git clone --recurse-submodules https://github.com/esanacore/string-lights-contro
 git clone --recurse-submodules https://github.com/esanacore/string-lights-controller
 cd string-lights-controller
 python3 -m pip install -r requirements-dev.txt
-sudo apt-get install -y g++ prusa-slicer
+sudo apt-get install -y g++ prusa-slicer   # Debian, Ubuntu, Mint, WSL
+# Fedora: sudo dnf install -y gcc-c++ python3-pip prusa-slicer
+# macOS:  xcode-select --install
 ```
 
 </details>

@@ -66,10 +66,7 @@ A West & Arrow LED string light, originally powered by a 3xAA box with a slide s
 - Acceptance criteria:
   - `FR-009-AC-1`: every command changes state as named and prints `status:`.
 
-**FR-010** `COULD` be controlled from Home Assistant.
-
-- Acceptance criteria:
-  - `FR-010-AC-1`: HA can switch, dim and pick an effect.
+Home Assistant control is a future idea, not a requirement yet. It lives in `docs/MVP_BACKLOG.md` and gets a requirement ID once the approach (serial bridge or ESP32 + ESPHome) is chosen.
 
 ### Enclosure
 

@@ -13,8 +13,8 @@ This page is the honest diff. The point is to show what the constitution adds to
 | CI workflows | 0 | 9 |
 | Automated test files | 1 (`tools/check_sketch.sh`) | 7 under `tests/` |
 | Automated checks run | 1 sketch syntax check, run by hand | 18 checks in one command, run in CI on every push |
-| Written requirements | 0 | 14 (10 functional, 4 non-functional) |
-| Requirements traced to a verifying test | 0 | 13 of 14 (FR-010 Home Assistant is honestly marked not started) |
+| Written requirements | 0 | 13 (9 functional, 4 non-functional) |
+| Requirements traced to a verifying test or dated hardware check | 0 | 13 of 13 (FR-007 IR is traced but still unverified on hardware) |
 | Documented test gaps | none written down | 5 (GAP-001 to GAP-005 in the test plan) |
 | ADRs | 3 | 4 (constitution's ADR-0001 plus the three project decisions) |
 | Session log | none | 2 summaries with a generated index |
@@ -39,7 +39,7 @@ What it did not have: any statement of what the thing is required to do, any way
 
 ## What the constitution added, and what each piece bought
 
-**A requirements spine.** `docs/PRODUCT_REQUIREMENTS.md` writes down the ten things the light actually has to do (PWM dimming, eight effects, S1 short and long press, power-cycle stepping, EEPROM memory, the matrix icons, IR, the case fit, serial control, Home Assistant) plus four non-functional ones. `docs/REQUIREMENTS_TRACEABILITY.md` points each one at the test or dated hardware check that proves it. Writing this exposed that IR (FR-007) can't be verified at all until the receiver is replaced, and that Home Assistant (FR-010) is a wish, not a feature. Both are now visible instead of implied.
+**A requirements spine.** `docs/PRODUCT_REQUIREMENTS.md` writes down the nine things the light actually has to do (PWM dimming, eight effects, S1 short and long press, power-cycle stepping, EEPROM memory, the matrix icons, IR, the case fit, serial control) plus four non-functional ones. `docs/REQUIREMENTS_TRACEABILITY.md` points each one at the test or dated hardware check that proves it. Writing this exposed that IR (FR-007) can't be verified at all until the receiver is replaced, and that Home Assistant is a wish, not a feature. The first CI run on the adopted repo failed the compliance gate on exactly that: Home Assistant was listed as a requirement with no test. It moved to the backlog until it has a real design. Both are now visible instead of implied.
 
 **Tests that encode lessons from the build.** The single syntax script became a suite that runs in one command (`bash tests/run_all.sh`) and in CI:
 
