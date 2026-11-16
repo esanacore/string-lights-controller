@@ -6,6 +6,13 @@ set -euo pipefail
 here="$(cd "$(dirname "$0")" && pwd)"
 root="$here/.."
 fail=0
+if ! command -v g++ >/dev/null 2>&1; then
+  echo "ERROR: g++ not found. Install a C++ compiler first:" >&2
+  echo "  Fedora: sudo dnf install -y gcc-c++" >&2
+  echo "  Debian/Ubuntu/Mint/WSL: sudo apt-get install -y g++" >&2
+  echo "  macOS: xcode-select --install" >&2
+  exit 1
+fi
 check() {
   local sketch="$1" tmp
   tmp="$(mktemp -d)"

@@ -11,6 +11,7 @@ All notable user-facing changes to this project are documented here. This projec
 
 ### Fixed
 
+- `tests/test_firmware_syntax.sh` stops with an install hint when `g++` is missing instead of failing every sketch; `docs/SETUP.md` lists Fedora and macOS packages.
 - Case v2 gcode now loads the saved bed mesh (`START_PRINT ... MESH=MESH_DATA`). The first v2 slice printed from the wrong height and was canceled; it is replaced by `v2b_case_base_plugs_PETG_0.6n.gcode`.
 
 ## 0.2.0 - 2026-11-16
