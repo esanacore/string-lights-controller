@@ -4,3 +4,17 @@ build/
 __pycache__/
 .DS_Store
 Thumbs.db
+
+# Secrets (constitution SECURITY.md); this project has none, keep it that way
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+credentials.json
+.netrc
+*.tfstate
+*.tfstate.*
+secrets.*

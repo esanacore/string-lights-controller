@@ -1,5 +1,7 @@
 # Troubleshooting
 
+Every problem hit during the build, its cause and fix. See also `docs/ir-receiver.md` for the full IR investigation.
+
 Every problem hit during the build, its cause and fix.
 
 | Symptom | Cause | Fix |

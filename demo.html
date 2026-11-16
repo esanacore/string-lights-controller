@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>String Lights Controller: firmware simulator</title>
+<!--
+  Demo page (constitution DOCUMENTATION.md, "Demo Page").
+  A browser simulation of firmware v2.4: the same effect math, gamma curve,
+  brightness/speed scaling and 8x8 icons as firmware/string_lights/string_lights.ino.
+  Keep it in step with the firmware: when an effect or icon changes, change it here too.
+-->
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; font: 15px/1.5 system-ui, sans-serif; background: #15171c; color: #e8e6e1; }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
+  p.sub { color: #a7a39b; margin: 0 0 24px; }
+  .stage { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; background: #0d0e11; border-radius: 12px; padding: 24px; }
+  .box { background: #1e1f23; border-radius: 10px; padding: 14px; display: inline-grid; gap: 14px; justify-items: center; }
+  .matrix { display: grid; grid-template-columns: repeat(8, 14px); gap: 4px; background: #111; padding: 8px; border-radius: 4px; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; background: #3a2222; }
+  .dot.on { background: #ff3b30; box-shadow: 0 0 6px #ff3b30; }
+  .s1 { width: 26px; height: 26px; border-radius: 50%; background: #2c2d33; border: 2px solid #44464e; cursor: pointer; }
+  .s1:active { background: #555; }
+  .string { flex: 1; min-width: 260px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .bulb { width: 18px; height: 22px; border-radius: 50% 50% 45% 45%; background: #ffcf7a; }
+  .controls { margin-top: 20px; display: grid; gap: 14px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  button { background: #2a2c33; color: #e8e6e1; border: 1px solid #3c3f48; border-radius: 6px; padding: 6px 12px; cursor: pointer; font: inherit; }
+  button.sel { background: #5a3f1a; border-color: #b8873d; }
+  label { color: #a7a39b; min-width: 84px; }
+  input[type=range] { flex: 1; max-width: 300px; }
+  .status { font-family: ui-monospace, monospace; color: #8fd18f; margin-top: 12px; }
+  footer { margin-top: 28px; color: #7d7a73; font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>String Lights Controller</h1>
+  <p class="sub">Live simulation of firmware v2.4. Click the round button (S1): short click toggles, hold about 0.7 s for the next effect. Same effects, icons and gamma as the Uno.</p>
+
+  <div class="stage">
+    <div class="box">
+      <div class="matrix" id="matrix"></div>
+      <div class="s1" id="s1" title="S1: click = on/off, hold = next effect"></div>
+    </div>
+    <div class="string" id="string"></div>
+  </div>
+
+  <div class="controls">
+    <div class="row" id="effects"></div>
+    <div class="row"><label>Brightness</label><input type="range" id="dim" min="0" max="255" value="255"></div>
+    <div class="row"><label>Speed</label><input type="range" id="speed" min="1" max="10" value="5"></div>
+    <div class="row"><button id="power">Turn off</button><button id="cycle">Simulate power cycle</button></div>
+  </div>
+  <div class="status" id="status"></div>
+
+  <footer>Apache-2.0. Source: firmware/string_lights/string_lights.ino. Hardware: Uno R3, 2N2222 on D9, MAX7219 on D10 to D12, S1 on D4.</footer>
+</main>
+
+<script>
+const NAMES = ["solid", "breathe", "twinkle", "candle", "pulse", "blink", "wave", "sunrise"];
+// Upright icons, one byte per row, MSB = left (same as ICONS[] in the sketch)
+const ICONS = [
+  [0x00,0x7E,0x7E,0x7E,0x7E,0x7E,0x7E,0x00], [0x00,0x3C,0x42,0x42,0x42,0x42,0x3C,0x00],
+  [0x10,0x10,0x7C,0x10,0x10,0x02,0x07,0x02], [0x08,0x18,0x1C,0x3C,0x3E,0x3E,0x1C,0x08],
+  [0x00,0x66,0xFF,0xFF,0x7E,0x3C,0x18,0x00], [0xF0,0xF0,0xF0,0xF0,0x0F,0x0F,0x0F,0x0F],
+  [0x00,0x00,0x30,0x48,0x84,0x02,0x01,0x00], [0x00,0x00,0x00,0x18,0x3C,0x7E,0xFF,0x00],
+];
+const st = { on: true, effect: 1, brightness: 255, speed: 5, start: performance.now(), overlayUntil: 0, overlay: 0 };
+const BULBS = 20;
+
+const matrix = document.getElementById("matrix");
+const dots = [...Array(64)].map(() => { const d = document.createElement("div"); d.className = "dot"; matrix.appendChild(d); return d; });
+const strEl = document.getElementById("string");
+const bulbs = [...Array(BULBS)].map(() => { const b = document.createElement("div"); b.className = "bulb"; strEl.appendChild(b); return b; });
+const effBox = document.getElementById("effects");
+const effBtns = NAMES.map((n, i) => { const b = document.createElement("button"); b.textContent = `${i + 1} ${n}`; b.onclick = () => setEffect(i); effBox.appendChild(b); return b; });
+
+const periodMs = base => base * 5 / st.speed;
+const gamma8 = x => (x * x) / 255;
+const triangle = (t, p) => { const q = t % p, h = p / 2; return q < h ? q * 255 / h : (p - q) * 255 / h; };
+let tw = { next: 0, level: 255 }, cand = { level: 220, last: 0 };
+const rnd = (a, b) => a + Math.floor(Math.random() * (b - a));
+
+function effectLevel(now) {
+  const t = now - st.start;
+  switch (st.effect) {
+    case 0: return 255;
+    case 1: { const ph = (t % periodMs(4000)) / periodMs(4000); return 20 + (1 - Math.cos(ph * 2 * Math.PI)) / 2 * 235; }
+    case 2: if (now >= tw.next) { tw.level = Math.random() < 0.7 ? rnd(200, 256) : rnd(40, 140); tw.next = now + rnd(30, periodMs(250)); } return tw.level;
+    case 3: if (now - cand.last >= 20) { cand.last = now; cand.level += (rnd(150, 256) - cand.level) * (0.05 + st.speed * 0.03); } return cand.level;
+    case 4: { const p = t % periodMs(1400), b = periodMs(140); if (p < b) return 255 - p * 200 / b; if (p < 2 * b) return 55; if (p < 3 * b) return 255 - (p - 2 * b) * 200 / b; return 55; }
+    case 5: return (t % periodMs(1000)) < periodMs(500) ? 255 : 0;
+    case 6: return triangle(t, periodMs(6000));
+    case 7: { const d = periodMs(30000); return t >= d ? 255 : t * 255 / d; }
+  }
+  return 255;
+}
+
+function drawMatrix(now) {
+  let rows;
+  if (now < st.overlayUntil) rows = [0,0,0,0,0,0,1,1].map(on => on ? (0xFF << (8 - st.overlay)) & 0xFF : 0);
+  else if (!st.on) rows = [0,0,0,0,0,0,0,0x01];
+  else rows = ICONS[st.effect];
+  rows.forEach((bits, r) => { for (let c = 0; c < 8; c++) dots[r * 8 + c].classList.toggle("on", !!(bits & (0x80 >> c))); });
+}
+
+function frame(now) {
+  const lvl = st.on ? gamma8(effectLevel(now) * st.brightness / 255) / 255 : 0;
+  bulbs.forEach(b => { b.style.opacity = (0.08 + 0.92 * lvl).toFixed(3); b.style.boxShadow = lvl > 0.05 ? `0 0 ${4 + 14 * lvl}px rgba(255,190,90,${lvl})` : "none"; });
+  drawMatrix(now);
+  requestAnimationFrame(frame);
+}
+
+function status() {
+  document.getElementById("status").textContent = `status: ${st.on ? "on" : "off"} effect=${NAMES[st.effect]} brightness=${st.brightness} speed=${st.speed}`;
+  effBtns.forEach((b, i) => b.classList.toggle("sel", i === st.effect));
+  document.getElementById("power").textContent = st.on ? "Turn off" : "Turn on";
+}
+function setEffect(i) { st.effect = (i + 8) % 8; st.start = performance.now(); st.overlayUntil = 0; if (!st.on) st.on = true; status(); }
+function setLights(on) { st.on = on; if (on) st.start = performance.now(); status(); }
+function overlay(v) { st.overlay = v; st.overlayUntil = performance.now() + 1500; }
+
+document.getElementById("dim").oninput = e => { st.brightness = +e.target.value; overlay(Math.round((st.brightness * 8 + 254) / 255)); status(); };
+document.getElementById("speed").oninput = e => { st.speed = +e.target.value; overlay(Math.round((st.speed * 8 + 9) / 10)); status(); };
+document.getElementById("power").onclick = () => setLights(!st.on);
+document.getElementById("cycle").onclick = () => { st.brightness = 255; document.getElementById("dim").value = 255; setEffect(st.effect + 1); };
+
+let pressedAt = 0;
+const s1 = document.getElementById("s1");
+s1.addEventListener("pointerdown", () => { pressedAt = performance.now(); });
+s1.addEventListener("pointerup", () => { if (performance.now() - pressedAt >= 700) setEffect(st.effect + 1); else setLights(!st.on); });
+
+status();
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

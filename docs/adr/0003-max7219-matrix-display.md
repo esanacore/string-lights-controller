@@ -1,4 +1,4 @@
-# ADR 0002: MAX7219 8x8 matrix as the display
+# ADR 0003: MAX7219 8x8 matrix as the display
 
 **Status:** accepted, 2026-11-15
 

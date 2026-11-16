@@ -71,4 +71,4 @@ Brightness passes through a square-law gamma so fades look even.
 
 ## Checking without a board
 
-`tools/check_sketch.sh` compiles the sketch on the host with g++ against stub headers in `tools/stubs/`. It catches syntax and declaration errors only; it is not a substitute for the Arduino compiler or hardware testing.
+`tests/test_firmware_syntax.sh` (run by `bash tests/run_all.sh`) compiles every sketch on the host with g++ against stub headers in `tests/stubs/`, and `tests/test_firmware_static.py` checks the pin map, effect list, matrix rotation and memory settings. It catches syntax and declaration errors only; it is not a substitute for the Arduino compiler or hardware testing.

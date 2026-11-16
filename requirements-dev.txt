@@ -1,0 +1,4 @@
+# Tools for the case generator and the test suite (not needed to build the firmware)
+manifold3d==3.5.5
+trimesh==5.2.1
+numpy==2.5.3

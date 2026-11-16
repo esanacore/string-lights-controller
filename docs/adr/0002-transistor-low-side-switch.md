@@ -1,4 +1,4 @@
-# ADR 0001: 2N2222 low-side switch instead of a relay
+# ADR 0002: 2N2222 low-side switch instead of a relay
 
 **Status:** accepted, 2026-11-15
 

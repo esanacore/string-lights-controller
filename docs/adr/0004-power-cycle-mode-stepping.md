@@ -1,4 +1,4 @@
-# ADR 0003: Step effects on each power-up
+# ADR 0004: Step effects on each power-up
 
 **Status:** accepted, 2026-11-15
 
