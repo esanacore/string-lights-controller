@@ -24,7 +24,7 @@ A West & Arrow battery string light (originally 3xAA, single slide switch) conve
 | [firmware/string_lights/](firmware/string_lights/string_lights.ino) | Current firmware (v2.4). This is what's flashed. |
 | [firmware/ir_test/](firmware/ir_test/ir_test.ino) | Library-free IR receiver test sketch |
 | [firmware/archive/](firmware/archive/) | Every earlier firmware version from the build |
-| [hardware/case/](hardware/case/) | Parametric case generator (`uno_case.py`) and STLs |
+| [hardware/case/](hardware/case/) | Case generators (`uno_case.py` v1, `uno_case_v2.py` v2), STLs and sliced gcode per version |
 | [docs/wiring.md](docs/wiring.md) | Final schematic, pin map, wire colors |
 | [docs/bom.md](docs/bom.md) | Parts list |
 | [docs/firmware.md](docs/firmware.md) | Controls, settings, serial commands, version history |
@@ -50,7 +50,7 @@ A West & Arrow battery string light (originally 3xAA, single slide switch) conve
 | Electronics | Done, soldered on the proto shield, tested |
 | Firmware v2.4 | Flashed and verified (effects, button, matrix orientation, memory) |
 | IR | Code ready; needs a replacement receiver |
-| Case | Designed; printing on the Adventurer 5M Pro in PETG; lid not yet test-fit |
+| Case | v1 printed and in use (glued). v2 (heat-set inserts, plugs, USB fix) designed and reviewed; base sliced, lid waits on 3 matrix measurements |
 | Home Assistant | Not started (serial bridge planned) |
 
 ## License
