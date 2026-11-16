@@ -55,4 +55,4 @@ A West & Arrow battery string light (originally 3xAA, single slide switch) conve
 
 ## License
 
-Not chosen yet. Pick one before pushing (see TODO in [CHANGELOG.md](CHANGELOG.md)).
+Apache License 2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
