@@ -33,6 +33,7 @@ Line coverage isn't meaningful for a single Arduino sketch checked statically. T
 | Date | Overall coverage | Notes |
 | --- | --- | --- |
 | 2026-11-16 | 13 of 13 requirements with checks; 18 automated tests | Baseline at constitution adoption |
+| 2026-11-16 | 13 of 13; 27 automated tests | Case v3 geometry tests added |
 
 ## Coverage Gap Log
 

@@ -35,3 +35,7 @@ Case v2 design with geometry tests, the v2b base print running, and the constitu
 
 - Matrix measurements (face to PCB, hole offset from block, hole spacing) needed for the lid.
 - IR receiver replacement.
+
+## Addendum (2026-11-16, evening)
+
+The v2b base printed with good walls and cutouts, and all three plugs fit (the barrel plug after trimming bridge sag). The corner-boss insert holes filled with oozed wet PETG; Eric heat-pressed M3 inserts into them anyway, several went in off-center, and he decided to drop heat-set inserts. Case v3 (`uno_case_v3.py`) removes the corner bosses, makes the lid press-fit with crush ribs, and uses pilot holes for M2x6 socket heads and M3 self-tappers (Claude's pick from Eric's fastener stock). The v3 base is sliced for dried gray PETG with `avoid_crossing_perimeters` and `wipe` on.

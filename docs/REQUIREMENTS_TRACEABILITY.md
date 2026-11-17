@@ -18,7 +18,7 @@ Links each requirement in `docs/PRODUCT_REQUIREMENTS.md` to its tests and verifi
 | FR-005 | MUST | Upright matrix icons | FR-005-AC-1 | `test_firmware_static.py::test_matrix_orientation`; manual 2026-11-15 (photos 26-*) | Verified |
 | FR-006 | SHOULD | Power-up steps the effect | FR-006-AC-1 | `test_firmware_static.py::test_power_cycle_and_memory`; manual 2026-11-15 | Verified |
 | FR-007 | SHOULD | 21-key IR remote | FR-007-AC-1 | `test_firmware_static.py::test_pin_map` (D2); codes unverified: receiver faulty (`docs/ir-receiver.md`) | Deferred |
-| FR-008 | MUST | Enclosure v2 | FR-008-AC-1, -AC-2, -AC-3 | `tests/test_case_geometry.py` (`test_usb_cutout_centered_on_port`, `test_lid_does_not_collide_with_base`, `test_lid_holes_align_with_bosses`); physical fit pending print | In Progress |
+| FR-008 | MUST | Enclosure (v3) | FR-008-AC-1, -AC-2, -AC-3 | `tests/test_case_v3_geometry.py` (`test_v3_cutouts_match_v2_plugs`, `test_v3_lid_does_not_collide_except_ribs`, `test_v3_lid_press_fit`, `test_v3_lid_clears_slot_plug`); v2 base printed 2026-11-16, plugs fit; v3 base and lid pending print | In Progress |
 | FR-009 | SHOULD | Serial commands | FR-009-AC-1 | Syntax only (`tests/test_firmware_syntax.sh`); manual 2026-11-15 | Verified |
 
 ## Non-Functional Requirements

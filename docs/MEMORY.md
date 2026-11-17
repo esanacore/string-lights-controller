@@ -32,3 +32,5 @@ This file contains durable memories, codebase learnings, user preferences, and k
 - Power-cycle stepping through effects plus EEPROM memory (ADR-0004).
 - Case v2 uses heat-set inserts and removable press-fit plugs; lid waits on three matrix measurements.
 - The repo adopts Eric's Engineering Constitution as a `constitution/` submodule.
+- Small isolated islands near the top of a PETG print (like 7 mm corner bosses) collect ooze when the filament is wet; insert holes in them can fill completely. Dry PETG and avoid tiny islands at the rim.
+- Bridged tops of wall cutouts sag a few tenths of a mm; plugs may need the drooped strands trimmed.

@@ -6,6 +6,7 @@ All notable user-facing changes to this project are documented here. This projec
 
 ### Added
 
+- Case v3 (`hardware/case/uno_case_v3.py`): no heat-set inserts. Press-fit lid with crush ribs instead of corner bosses and screws; the Uno screws straight into pilot holes (M2x6 socket heads, M3 self-tappers); matrix posts use M2 pilot holes. Base sliced in `print_v3/`. Geometry tests in `tests/test_case_v3_geometry.py`.
 - Case v2 lid: sliced once the matrix module is measured (see `docs/case.md`).
 - `docs/CONSTITUTION_ADOPTION.md`: before and after metrics for the constitution adoption.
 

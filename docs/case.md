@@ -87,3 +87,38 @@ The post positions are estimates. Measure on the HW-109 and set these in `uno_ca
 3. Lay the string leads in the slot channel, slide the slot plug down over them.
 4. Matrix onto the lid posts with 2x M2x6. Plunger into its tube.
 5. Lid on, 4x M3x8 flat head. Plugs into the USB or barrel cutouts you're not using.
+
+## v2 print results (2026-11-16)
+
+Printed as `v2b` (black PETG, mesh loaded). Walls, first layer, connector cutouts and the three plugs all came out well; the barrel plug needed the drooped bridge strands at the top of its cutout trimmed with a knife. The four lid corner bosses printed badly: the PETG was wet, and the nozzle oozed into the small insert holes while hopping between those four tiny islands until the holes filled with tangled strands. The M3 inserts were pressed in anyway and several ended up off-center, so heat-set inserts were dropped for this build. The standoff holes on the floor printed clean.
+
+---
+
+# Case v3
+
+## Why
+
+The v2 corner-boss insert holes filled in during printing and the inserts went in off-center. Eric chose to drop inserts entirely and reprint the base in dried gray PETG.
+
+## What changed
+
+| Area | v3 |
+|---|---|
+| Lid retention | Press-fit. Corner bosses and lid screws removed. Full-perimeter lip (5 mm tall, 0.15 mm clearance per side) with 10 vertical crush ribs (0.35 mm) that give about 0.2 mm of interference; lip cut at the wire slot; fingernail notch at the USB end |
+| Board retention | Pilot holes in the standoffs, screws thread straight into the plastic: **M2x6 socket heads** at the two holes next to the barrel jack and header (1.8 mm pilot, prints ~1.6), **M3 self-tapping pan heads** (6 or 8 mm) at the two far holes (2.7 mm pilot, prints ~2.5). Pilots run 6.2 mm deep and stop 0.8 mm above the bottom |
+| Matrix retention | M2x6 socket heads into 1.8 mm pilot holes in the two lid posts |
+| Unchanged | Outer size, cutouts, wire slot, S1 tube and plunger, matrix window. The v2 plugs and plunger are reused |
+| Print profile | `avoid_crossing_perimeters` and `wipe` on, to cut stringing over the rim |
+
+Checked by `tests/test_case_v3_geometry.py`: watertight, fits the bed, no material at the rim corners, pilots open, blind, smaller than the screw thread and surrounded by solid standoff, lid overlaps the base only at the crush ribs, lip clears the wire slot.
+
+## Before printing the lid
+
+Same three matrix measurements as v2 (above), set in `uno_case_v3.py`. Item 3 no longer has a corner boss to clear.
+
+## Assembly (v3)
+
+1. Uno into the base, then M2x6 at the two connector-end holes and M3 self-tappers at the far two. Snug only: they cut their own threads and strip if overtightened.
+2. Lay the string leads in the slot channel, slide the slot plug down over them.
+3. Matrix onto the lid posts with 2x M2x6. Plunger into its tube.
+4. Press the lid on. Pry it off at the notch at the USB end. Plugs into the cutouts you're not using.
