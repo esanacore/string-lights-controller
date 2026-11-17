@@ -11,7 +11,7 @@ Changes from v2 (see docs/case.md):
         crowded holes next to the barrel jack (an M3 head doesn't fit there).
       * matrix: M2x6 socket heads thread into pilot holes in two posts under the lid.
   - Removing the corner bosses also removes the four tiny islands at the rim that strung badly.
-  - Connector cutouts unchanged, so the v2 plugs are reused.
+  - Connector cutouts unchanged (v2 plugs still fit); v3 plugs get 0.5 mm top clearance for bridge sag.
 
 Prints on the Adventurer 5M Pro (0.6 mm nozzle, PETG), all without supports:
   base open side up, lid face down, plunger on its collar, plugs flange down.
@@ -82,7 +82,7 @@ MX_HOLE_SPACING = 26.0           # between the two mounting holes (centered on t
 MX_POST_D = 6.6
 
 PLUG_CLEAR_W = 0.1               # per side across the width
-PLUG_CLEAR_TOP = 0.3             # at the bridged top edge
+PLUG_CLEAR_TOP = 0.5             # at the bridged top edge (v2: 0.3, barrel plug needed the sag trimmed)
 PLUG_CHAMFER = 0.6
 RIB = 0.3                        # crush-rib height
 SLOT_LIP_CUT = 10.0              # lid lip cut-out over the wire slot
@@ -245,4 +245,6 @@ if __name__ == "__main__":
     export(plunger, "stl_v3/v3_case_plunger.stl")
     print(f"outer: {out_L:.1f} x {out_W:.1f} x {out_H:.1f} mm, lid {LID_T} mm")
     print(f"matrix posts at {mx_posts}, post length {post_len:.1f} mm")
-    print("plugs: reuse the v2 plugs (stl_v2/), the cutouts are unchanged")
+    export(usb_plug, "stl_v3/v3_plug_usb.stl")
+    export(jack_plug, "stl_v3/v3_plug_barrel.stl")
+    export(slot_plug.rotate([90, 0, 0]), "stl_v3/v3_plug_slot.stl")

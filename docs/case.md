@@ -114,7 +114,7 @@ Checked by `tests/test_case_v3_geometry.py`: watertight, fits the bed, no materi
 
 ## Before printing the lid
 
-Same three matrix measurements as v2 (above), set in `uno_case_v3.py`. Item 3 no longer has a corner boss to clear.
+The first v3 lid is printed with the estimated `MX_*` values so the whole set matches in gray. If the matrix posts miss the HW-109 holes, take the three measurements (above), set them in `uno_case_v3.py`, and reprint only the lid. Item 3 no longer has a corner boss to clear.
 
 ## Assembly (v3)
 

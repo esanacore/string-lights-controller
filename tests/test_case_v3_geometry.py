@@ -35,7 +35,7 @@ def lid_on_base():
             .mirror([0, 1, 0]).translate([0, 2 * M.cyc, 0]))
 
 def test_v3_parts_watertight():              # NFR-002
-    for name in ("base", "lid", "plunger"):
+    for name in ("base", "lid", "plunger", "usb_plug", "jack_plug", "slot_plug"):
         assert mesh(getattr(M, name)).is_watertight, name
 
 def test_v3_fits_printer_bed():              # NFR-002: AD5M Pro is 220 x 220 x 220
@@ -52,6 +52,9 @@ def test_v3_no_inserts_or_bosses():          # FR-008: nothing at the rim corner
     for x in (M.cav_x0 + 2, M.cav_x1 - 2):
         for y in (M.cav_y0 + 2, M.cav_y1 - 2):
             assert not solid_at(M.base, x, y, M.out_H - 3), f"material at rim corner {x, y}"
+
+def test_v3_plug_top_clearance_covers_bridge_sag():   # FR-008: v2 barrel plug needed trimming
+    assert M.PLUG_CLEAR_TOP >= 0.5
 
 def test_v3_pilot_holes_bite():              # NFR-003: hole smaller than the screw's thread
     assert M.PILOT["M3"] < 3.0 and M.PILOT["M2"] < 2.0
