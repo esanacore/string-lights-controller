@@ -34,3 +34,5 @@ This file contains durable memories, codebase learnings, user preferences, and k
 - The repo adopts Eric's Engineering Constitution as a `constitution/` submodule.
 - Small isolated islands near the top of a PETG print (like 7 mm corner bosses) collect ooze when the filament is wet; insert holes in them can fill completely. Dry PETG and avoid tiny islands at the rim.
 - Bridged tops of wall cutouts sag a few tenths of a mm; plugs may need the drooped strands trimmed.
+- Printer is back on the OEM 0.6 mm steel nozzle (the Phaetus high-flow clogged); print PETG at 250 C. Re-run the bed mesh at 80 C and save it as `MESH_DATA` after any nozzle change.
+- Printer upload commands must `cd` to the gcode first and chain with `&&`; an upload from the wrong folder sends an empty file that still reports `print_started: true`.

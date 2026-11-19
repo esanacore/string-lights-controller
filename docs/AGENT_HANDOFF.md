@@ -29,7 +29,7 @@ format.
 
 **Human action required:** steps 1, 2, 3 and 5.
 
-1. [ ] **HUMAN** — Print the v3 full set in dried gray PETG (`hardware/case/print_v3/v3_case_full_set_PETG_0.6n.gcode`) and test-fit the Uno with M2x6 and M3 self-tapping screws
+1. [ ] **HUMAN** — Check the v3 gray print (started 2026-11-16 at 250 C as `print_v3/v3_case_full_set_PETG_0.6n_250C.gcode`), send photos, and test-fit the Uno with M2x6 and M3 self-tapping screws
    - **Why a human:** physical print and assembly on Eric's AD5M Pro.
    - **Done when:** the board screws down without stripping and the v2 plugs and plunger fit the new base.
 2. [ ] **HUMAN** — Move the electronics out of the glued v1 case and measure the MAX7219 module

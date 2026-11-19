@@ -12,6 +12,8 @@ All notable user-facing changes to this project are documented here. This projec
 
 ### Fixed
 
+- Photos and notes from the 2026-11-16 v2 print, plug fit, corner-boss failure and insert attempt added (19 images, gallery 29 to 33, build log 18 to 20), plus the nozzle swap and new bed mesh. The 250 C gcode that actually printed is in `print_v3/`.
+
 - `tests/test_firmware_syntax.sh` stops with an install hint when `g++` is missing instead of failing every sketch; `docs/SETUP.md` lists Fedora and macOS packages.
 - Case v2 gcode now loads the saved bed mesh (`START_PRINT ... MESH=MESH_DATA`). The first v2 slice printed from the wrong height and was canceled; it is replaced by `v2b_case_base_plugs_PETG_0.6n.gcode`.
 

@@ -133,11 +133,29 @@ Assembled and running on the 9 V barrel adapter. Findings (photos `27-*`):
 
 Hardware inventory photographed (`28-hw-*`). v2 (`hardware/case/uno_case_v2.py`) uses Kadrick heat-set inserts throughout, adds removable plugs for the USB, barrel jack and wire slot, fixes the USB center, widens the plunger bore, and adds matrix mounting posts. Design reviewed independently before printing; see [case.md](case.md).
 
+## 18. Case v2 print (2026-11-16)
+
+The first v2 slice started from too high and was canceled: ZMOD's `START_PRINT` loads no bed mesh unless `MESH=` is passed (the night before, a mesh was still active from calibration). Resliced as v2b with `MESH=MESH_DATA` (`33-*`) and it printed well: clean walls and first layer, square cutouts (`29-*`). The black PETG was wet, so it strung heavily at the rim.
+
+Plugs (`30-*`): the USB and slot plugs fit as printed. The barrel plug bound on drooped bridge strands at the top of its cutout; trimming them with a knife fixed it.
+
+Corner bosses (`31-*`): the four 7 mm lid bosses near the rim are tiny islands, and the nozzle oozed into their 4.2 mm insert holes on every layer until they filled with a tangle. M3x5 inserts were heat-pressed in anyway at 245 C (`32-*`); after sanding the rim flat several were visibly off-center. Eric decided to drop heat-set inserts for this build.
+
+## 19. Case v3
+
+`hardware/case/uno_case_v3.py`: no inserts and no corner bosses. Press-fit lid with crush ribs, pilot holes in the standoffs (M2x6 socket heads at the crowded holes, M3 self-tappers at the far two), 0.5 mm top clearance on the plugs for bridge sag, `avoid_crossing_perimeters` and `wipe` on. Full matching set (base, lid with estimated matrix posts, plunger, plugs) on one plate for dried gray PETG. See [case.md](case.md).
+
+## 20. Nozzle swap, new mesh, gray print
+
+The Phaetus 0.6 high-flow nozzle was badly clogged, so Eric went back to the OEM 0.6 mm steel nozzle. New bed mesh at 80 C saved as `MESH_DATA` (range 0.259 mm, min -0.109, max 0.150). The v3 full set was started at 250 C (steel transfers heat worse than brass) as `print_v3/v3_case_full_set_PETG_0.6n_250C.gcode`. One false start: the first upload command ran from the wrong folder and sent an empty file; the fix was chaining the steps with `&&` and checking the file size before uploading.
+
 ## Open items
 
 - [ ] Replacement 1838 IR receiver; verify the remote codes with `ir_test` then the main sketch.
 - [x] Case v1 printed, assembled, in use (glued).
-- [ ] Measure the matrix module (3 numbers, see case.md) and print case v2.
+- [x] Case v2 base printed and test-fit (superseded by v3).
+- [ ] Case v3 gray print: check the result, fit the Uno with M2x6 / M3 self-tappers, press the lid on.
+- [ ] Measure the matrix module (3 numbers, see case.md); reprint the v3 lid only if the posts miss.
 - [ ] Choose a license.
 - [ ] Optional: Home Assistant serial bridge, or move to an ESP32 + ESPHome for Wi-Fi.
 - [ ] Optional: second button on D5.

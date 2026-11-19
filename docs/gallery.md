@@ -1,6 +1,6 @@
 # Photo gallery
 
-Every photo taken during the 2026-11-15 build, in order. Numbers match the steps in [build-log.md](build-log.md).
+Every photo from the build (2026-11-15) and the case work (2026-11-16), in order. Numbers match the steps in [build-log.md](build-log.md).
 
 ### 01-parts-inventory-a.jpg
 Parts on hand at the start (kits and spare boards)
@@ -430,3 +430,99 @@ Kadrick insert sizes: M2 x2/3/4, M3 x3/4/5/6/8, M4 x8/10, M5 x10/12
 
 ![Kadrick insert sizes: M2 x2/3/4, M3 x3/4/5/6/8, M4 x8/10, M5 x10/12](images/28-hw-kadrick-inserts-sizes.jpg)
 
+## 2026-11-16: case v2 print and test fit
+
+### 29-v2-print-base-angle.jpg
+v2b base off the printer (black PETG): clean walls and cutouts, heavy stringing at the rim and corner bosses
+
+![v2b base off the printer (black PETG): clean walls and cutouts, heavy stringing at the rim and corner bosses](images/29-v2-print-base-angle.jpg)
+
+### 29-v2-print-side.jpg
+v2b base, plain side wall: clean first layer and walls, strings only at the top
+
+![v2b base, plain side wall: clean first layer and walls, strings only at the top](images/29-v2-print-side.jpg)
+
+### 29-v2-print-inside.jpg
+v2b base from above: wire slot, standoffs and the strung-over corner bosses
+
+![v2b base from above: wire slot, standoffs and the strung-over corner bosses](images/29-v2-print-inside.jpg)
+
+### 29-v2-print-usb-end.jpg
+v2b USB end: USB and barrel cutouts printed square
+
+![v2b USB end: USB and barrel cutouts printed square](images/29-v2-print-usb-end.jpg)
+
+### 30-v2-plugs-fitted.jpg
+USB and barrel plugs pressed into the v2 base
+
+![USB and barrel plugs pressed into the v2 base](images/30-v2-plugs-fitted.jpg)
+
+### 30-v2-plugs-proud-side.jpg
+Plugs seen from the side, sitting proud of the wall before the barrel cutout was trimmed
+
+![Plugs seen from the side, sitting proud of the wall before the barrel cutout was trimmed](images/30-v2-plugs-proud-side.jpg)
+
+### 30-v2-plug-edge-close.jpg
+Close-up of a plug flange against the wall
+
+![Close-up of a plug flange against the wall](images/30-v2-plug-edge-close.jpg)
+
+### 30-v2-slot-plug-fitted.jpg
+Wire-slot plug (H-section) slid into the slot: fits
+
+![Wire-slot plug (H-section) slid into the slot: fits](images/30-v2-slot-plug-fitted.jpg)
+
+### 30-v2-standoffs-top-down.jpg
+Top-down: floor standoffs printed with clean open holes; corner bosses buried in strings
+
+![Top-down: floor standoffs printed with clean open holes; corner bosses buried in strings](images/30-v2-standoffs-top-down.jpg)
+
+### 30-v2-usb-plug-barrel-open.jpg
+USB plug seated perfectly; barrel cutout empty (its plug would not go in)
+
+![USB plug seated perfectly; barrel cutout empty (its plug would not go in)](images/30-v2-usb-plug-barrel-open.jpg)
+
+### 30-v2-barrel-cutout-bridge-sag.jpg
+Barrel cutout: drooped bridge strands on the top edge, the reason the plug bound. Trimmed with a knife, then it fit
+
+![Barrel cutout: drooped bridge strands on the top edge, the reason the plug bound. Trimmed with a knife, then it fit](images/30-v2-barrel-cutout-bridge-sag.jpg)
+
+### 31-v2-corner-boss-a.jpg
+Corner boss close-up: perimeter printed, insert hole filled with a nest of oozed PETG
+
+![Corner boss close-up: perimeter printed, insert hole filled with a nest of oozed PETG](images/31-v2-corner-boss-a.jpg)
+
+### 31-v2-corner-boss-b.jpg
+Corner boss close-up: same nest, no open hole
+
+![Corner boss close-up: same nest, no open hole](images/31-v2-corner-boss-b.jpg)
+
+### 31-v2-corner-boss-c.jpg
+Corner boss close-up: the worst one, a solid tangle
+
+![Corner boss close-up: the worst one, a solid tangle](images/31-v2-corner-boss-c.jpg)
+
+### 31-v2-corner-boss-d.jpg
+Corner boss close-up, with the slot plug standing in the slot
+
+![Corner boss close-up, with the slot plug standing in the slot](images/31-v2-corner-boss-d.jpg)
+
+### 32-v2-inserts-side.jpg
+M3x5 inserts heat-pressed into the corner bosses (245 C): plastic mushroomed up around them
+
+![M3x5 inserts heat-pressed into the corner bosses (245 C): plastic mushroomed up around them](images/32-v2-inserts-side.jpg)
+
+### 32-v2-inserts-top-down.jpg
+All four corner inserts in, before sanding
+
+![All four corner inserts in, before sanding](images/32-v2-inserts-top-down.jpg)
+
+### 32-v2-inserts-off-center-sanded.jpg
+After sanding the rim flat: several inserts visibly off-center (top-left worst). Decision: drop inserts, design v3
+
+![After sanding the rim flat: several inserts visibly off-center (top-left worst). Decision: drop inserts, design v3](images/32-v2-inserts-off-center-sanded.jpg)
+
+### 33-v2b-mesh-fix-terminal.jpg
+Terminal: first v2 upload (no mesh loaded, canceled), MESH_DATA profile confirmed, v2b upload started
+
+![Terminal: first v2 upload (no mesh loaded, canceled), MESH_DATA profile confirmed, v2b upload started](images/33-v2b-mesh-fix-terminal.jpg)

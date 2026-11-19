@@ -39,3 +39,7 @@ Case v2 design with geometry tests, the v2b base print running, and the constitu
 ## Addendum (2026-11-16, evening)
 
 The v2b base printed with good walls and cutouts, and all three plugs fit (the barrel plug after trimming bridge sag). The corner-boss insert holes filled with oozed wet PETG; Eric heat-pressed M3 inserts into them anyway, several went in off-center, and he decided to drop heat-set inserts. Case v3 (`uno_case_v3.py`) removes the corner bosses, makes the lid press-fit with crush ribs, and uses pilot holes for M2x6 socket heads and M3 self-tappers (Claude's pick from Eric's fastener stock). The v3 base is sliced for dried gray PETG with `avoid_crossing_perimeters` and `wipe` on.
+
+## Addendum 2 (2026-11-18)
+
+Late on 2026-11-16 the Phaetus nozzle clogged; Eric swapped to the OEM 0.6 mm steel nozzle, a new `MESH_DATA` was probed (range 0.259 mm) and the v3 full set started at 250 C. On 2026-11-18 Eric asked to make sure every photo and note from the project was in the repo; the 19 photos from the v2 print and test fit plus the evening's notes were added (gallery sections 29 to 33, build log steps 18 to 20).

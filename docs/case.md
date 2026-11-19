@@ -116,6 +116,10 @@ Checked by `tests/test_case_v3_geometry.py`: watertight, fits the bed, no materi
 
 The first v3 lid is printed with the estimated `MX_*` values so the whole set matches in gray. If the matrix posts miss the HW-109 holes, take the three measurements (above), set them in `uno_case_v3.py`, and reprint only the lid. Item 3 no longer has a corner boss to clear.
 
+## v3 print (2026-11-16)
+
+Started 16:48 on the OEM 0.6 mm steel nozzle (the Phaetus nozzle clogged) at 250 C, after a fresh `MESH_DATA` (range 0.259 mm). First layer looked good. Result not recorded yet.
+
 ## Assembly (v3)
 
 1. Uno into the base, then M2x6 at the two connector-end holes and M3 self-tappers at the far two. Snug only: they cut their own threads and strip if overtightened.

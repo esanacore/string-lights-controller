@@ -37,7 +37,7 @@ A West & Arrow battery string light (originally 3xAA, single slide switch) conve
 | [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | Every problem hit and how it was resolved |
 | [docs/ir-receiver.md](docs/ir-receiver.md) | IR receiver investigation and replacement plan |
 | [docs/adr/](docs/adr/) | Design decisions |
-| [docs/gallery.md](docs/gallery.md) | All 70 build photos with captions |
+| [docs/gallery.md](docs/gallery.md) | All 104 build and case photos with captions |
 | [tests/](tests/run_all.sh) | Automated suite: firmware syntax and static checks, case geometry checks (`bash tests/run_all.sh`) |
 | [constitution/](https://github.com/esanacore/engineering-constitution) | Eric's Engineering Constitution, pinned as a git submodule |
 | [docs/PRODUCT_REQUIREMENTS.md](docs/PRODUCT_REQUIREMENTS.md) | Requirements (FR/NFR) with [traceability](docs/REQUIREMENTS_TRACEABILITY.md) and a [test plan](docs/TEST_PLAN.md) |
